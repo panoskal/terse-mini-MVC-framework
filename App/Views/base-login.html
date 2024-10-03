@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="/{% if root_folder %}{{ root_folder }}{% endif %}assets/img/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Σύνδεση</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+	{% embed 'Templates/top-login.html' %}{% endembed %}
+</head>
+
+<body class="container login-page d-flex justify-content-center align-items-center flex-column ">
+
+		<!-- main content -->
+		{% block body %}{% endblock %}
+
+	<!-- footer -->
+	{% embed 'Templates/footer-login.html' %}{% endembed %}
+</body>
+
+</html>

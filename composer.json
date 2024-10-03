@@ -1,0 +1,13 @@
+{
+    "require": {
+        "twig/twig": "^2.0",
+        "phpmailer/phpmailer": "^6.0",
+        "chillerlan/php-qrcode": "dev-main"
+    },
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "App\\": "App/"
+        }
+    }
+}

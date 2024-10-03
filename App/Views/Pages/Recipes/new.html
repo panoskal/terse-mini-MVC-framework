@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block title %}New recipe{% endblock %}
+
+{% block body %}
+
+{% include 'Templates/Recipes/ingredients-form.html' %}
+{% if errors and errors is iterable %}
+<div class="text-danger">{% for error in errors %}{{error}}<br>{% endfor %}</div>
+{% endif %}
+{% if success %}
+<div class="text-success">{{ success }}</div>
+{% endif %}
+<div class="container">
+    <div class="form-wrapper">
+        <div class="multisteps-form__progress mt-2">
+            <button class="multisteps-form__progress-btn js-active" type="button" title="User Info">1</button>
+            <button class="multisteps-form__progress-btn" type="button" title="Address">2</button>
+            <button class="multisteps-form__progress-btn" type="button" title="Order Info">3</button>
+            <button class="multisteps-form__progress-btn" type="button" title="Comments">4</button>
+        </div>
+        <form class="multisteps-form__form" method="post">
+            <!--single form panel-->
+            <div class="multisteps-form__panel rounded js-active" data-animation="slideHorz">
+                <div class="multisteps-form__content ">
+                    <div class="multisteps-form__group form__group mt-4">
+                        <label for="">RECIPE NAME</label>
+                        <input name="recipe[recipe_title]" class="alphanumeric multisteps-form__input form__input" type="text">
+                    </div>
+                    <div class="multisteps-form__group form__group mt-4">
+                        <label for="">PREPARING TIME</label>
+                        <div class="form__group-multi d-flex justify-content-center align-items-center">
+                            <input name="recipe[recipe_preparation_time]" class="alphanumeric multisteps-form__input form__input small" type="number">&nbsp;<span class="form__input-unit">MNTS.</span>
+                        </div>
+                    </div>
+                    <div class="multisteps-form__group form__group mt-4">
+                        <label for="">COOKING TIME</label>
+                        <div class="form__group-multi d-flex justify-content-center align-items-center">
+                            <input name="recipe[recipe_cooking_time]" class="alphanumeric multisteps-form__input form__input small" type="number">&nbsp;<span class="form__input-unit">MNTS.</span>
+                        </div>
+                    </div>
+                    <div class="multisteps-form__group form__group mt-4">
+                        <label for="">DIFFICULTY</label>
+                        <div class="">
+                            <div class="rating d-flex justify-content-between align-items-center">
+                                <span><input class="rating__input" type="radio" name="recipe[difficulty]" id="str5" value="5"><label
+                                        class="rating__label" for="str5"></label></span>
+                                <span><input class="rating__input" type="radio" name="recipe[difficulty]" id="str4" value="4"><label
+                                        class="rating__label" for="str4"></label></span>
+                                <span><input class="rating__input" type="radio" name="recipe[difficulty]" id="str3" value="3"><label
+                                        class="rating__label" for="str3"></label></span>
+                                <span><input class="rating__input" type="radio" name="recipe[difficulty]" id="str2" value="2"><label
+                                        class="rating__label" for="str2"></label></span>
+                                <span><input class="rating__input" type="radio" name="recipe[difficulty]" id="str1" value="1"><label
+                                        class="rating__label" for="str1"></label></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-row d-flex">
+                        <button class="form__btn ml-auto js-btn-next" type="button" title="Next">NEXT</button>
+                    </div>
+                </div>
+            </div>
+            <!--single form panel-->
+            <div class="multisteps-form__panel p-4 rounded" data-animation="slideHorz">
+                <div class="multisteps-form__step-info text-center pt-3">
+                    <p>Select the ingredients.</p>
+                    <p>If an ingredient is not included in the list, you can add it by pressing the button below.</p>
+                </div>
+                <div class="multisteps-form__content multisteps-form__ingredients pt-3">
+                    <div class="button-row d-flex">
+                        <button id="ingredientsFormBtn" class="form__btn ml-auto" type="button" class="btn">ADD INGREDIENTS</button>
+                    </div>
+
+                    <div id="ingredientRow_1" class="ingredient-row multisteps-form__group form__group mt-4">
+                        <div class="ingredient-row__wrapper row justify-content-center align-items-center">
+                            <div class="ingredient-row__select">
+                                <select name="ingredient_ids[]" class="select2 multisteps-form__input form__select ingredient-ids">
+                                    <option value="">SELECT INGREDIENT</option>
+                                    {% if data.ingredients is iterable %}
+                                    {% for ingredient in data.ingredients %}
+                                    <option value="{{ ingredient.ingredient_id }}">{{ ingredient.ingredient_name }}</option>
+                                    {% endfor %}
+                                    {% endif %}
+                                </select>
+                            </div>
+                            <div class="ingredient-row__remove">
+                                <div class="ingredient d-flex justify-content-end">
+                                    <button type="button" class="btn ingredient-row__remove-btn" data-target="ingredientRow_1"><i class="fas fa-minus align-self-center"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="addIngredientBlock">
+
+                    </div>
+
+                    <div class="d-flex justify-content-center mt-5">
+                        <button type="button" id="addIngredientRow" class="btn" ><i class="fas fa-plus"></i></button>
+                    </div>
+
+                    <div class="button-row d-flex mt-4">
+                        <button id="ingredientUnits" class="form__btn ml-auto js-btn-next" type="button" title="Next">NEXT</button>
+                    </div>
+                </div>
+            </div>
+            <!--single form panel-->
+            <div class="multisteps-form__panel p-4 rounded" data-animation="slideHorz">
+                <div class="multisteps-form__content multisteps-form__ingredients pt-3">
+                    <!-- <div class="button-row d-flex">
+                        <button id="ingredientsFormBtn" class="form__btn ml-auto" type="button" class="btn">ADD INGREDIENTS</button>
+                    </div> -->
+
+                    <div class="ingredient-unit-row d-flex justify-content-center">
+                        <div class="ingredient-unit-row__quantity">
+                            <label class="mb-0">PEOPLE</label>
+                            <div class="quantity-btns">
+                                <span class="quantity-handler minus form__input" data-action="remove">-</span>
+                                <input class="form__btn" type="text" name="recipe[recipe_people]" value="1"/>
+                                <span class="quantity-handler plus form__input" data-action="add">+</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="ingredientsWithUnitsBlock"></div>
+
+                    <div id="ingredientWithUnitsErrorMsgs" class="text-center text-danger my-5"></div>
+                    <div class="button-row d-flex mt-4">
+                        <button class="form__btn ml-auto js-btn-next" type="button" title="Next">NEXT</button>
+                    </div>
+                </div>
+            </div>
+            <!--single form panel-->
+            <div class="multisteps-form__panel p-4 rounded" data-animation="slideHorz">
+                <div class="multisteps-form__content">
+                    <div class="form-row mt-4">
+                        <textarea class="form__textarea multisteps-form__textarea" name="recipe[recipe_description]" placeholder="INSTRUCTIONS" rows="15"></textarea>
+                    </div>
+                    <div class="button-row d-flex mt-4">
+                        <button id="recipeSubmitAction" class="form__btn ml-auto" type="button" title="Next">SUBMIT</button>
+                    </div>
+                </div>
+            </div>
+            {% include 'Templates/Recipes/recipe-submit.html' %}
+        </form>
+    </div>
+</div>
+
+{% endblock %}

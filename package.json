@@ -1,0 +1,54 @@
+{
+  "name": "terse",
+  "version": "1.0.0",
+  "description": "Simple MVC mini framework",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "admin-lte": "^3.1.0",
+    "jquery-validation-engine": "git+https://github.com/posabsolute/jQuery-Validation-Engine.git",
+    "rollup": "^2.38.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "autoprefixer": "^10.2.6",
+    "browser-sync": "^2.26.14",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-csso": "^4.0.1",
+    "gulp-google-webfonts": "^4.0.0",
+    "gulp-hash-filename": "^3.0.0",
+    "gulp-postcss": "^9.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-terser": "^2.0.1",
+    "merge-stream": "^2.0.0",
+    "node-sass": "^5.0.0",
+    "postcss": "^8.3.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "yargs": "^16.2.0"
+  },
+  "scripts": {
+    "watch": "gulp watch",
+    "build": "gulp",
+    "build:js": "gulp js",
+    "build:style": "gulp style",
+    "build:icons": "gulp icons",
+    "build:production": "gulp --production"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/panoskal/terse.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/panoskal/terse/issues"
+  },
+  "homepage": "https://github.com/panoskal/terse#readme"
+}

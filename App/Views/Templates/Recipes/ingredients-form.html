@@ -1,0 +1,25 @@
+<div id="ingredientsFormContainer" class="ingredients-form">
+    <div class="page-header__buttons container">
+        <div id="ingredientsFormCloseBtn" class="page-header__button text-right ingredients-form__close-btn"><i class="fas fa-times"></i></div>
+    </div>
+    <div class="ingredients-form__wrapper container">
+        <div>
+            <form id="ingredientsForm" class="ingredients-form__form" method="post">
+                <h4>ADD INGREDIENT</h4>
+                <div id="ingredientFromRow">
+                    <div class="ingredients-form__group form__group mt-4">
+                        <input name="ingredient_name[]" class="alphanumeric ingredients-form__input form__input" type="text">
+                    </div>
+                </div>
+                <div id="ingredientsFormRowBtns" class="d-flex justify-content-center mt-5">
+                    <button type="button" id="addIngredientFormRow" class="btn" ><i class="fas fa-plus"></i></button>
+                </div>
+                <div class="button-row d-flex mt-4">
+                    <button id="saveIngredientBtn" class="form__btn ml-auto" type="button" title="Next">ADD</button>
+                </div>
+            </form>
+        </div>
+        <div id="ingredientFormSuccessMsgs" class="text-success mt-4"></div>
+        <div id="ingredientFormErrorMsgs" class="text-danger mt-4"></div>
+    </div>
+</div>

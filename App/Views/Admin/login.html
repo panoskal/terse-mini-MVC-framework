@@ -1,0 +1,26 @@
+{% extends "Admin/base-login.html" %}
+
+{% block title %}Σύνδεση{% endblock %}
+
+{% block body %}
+
+<div class="card">
+	<div class="card-body login-card-body">
+		<p class="login-box-msg">Είσοδος</p>
+
+		{% include 'Admin/Templates/Pages/Login/form.html' %}
+		
+		{% if errors %}
+		<div class="login-err-msg">
+			{% for key,value in errors %}
+				<div class="message text-red">{{ value }}</div>
+			{% endfor %}
+		</div>
+		{% endif %}
+
+
+	</div>
+	<!-- /.login-card-body -->
+</div>
+
+{% endblock %}
